@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--Author: Javin Vigil -->
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+
+
+<body>
+<h1 style="background-color:rgba(255,255,255,0.2)"> Javin Vigil's Roster Log </h1>
+
+<img src="Images/BOSSK.png" alt="Bounty Hunters" style="height:128px;z-index:0;position:absolute; left:150px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:150px; top:150px" onclick="translucent('BOSSK')" id="BOSSK">
+
+<img src="Images/DARTHREVAN.png" alt="General Skywalker" style="height:128px;z-index:0;position:absolute; left:300px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:300px; top:150px" onclick="translucent('DREVAN')" id="DREVAN">
+
+<img src="Images/GENERALSKYWALKER.png" alt="General Skywalker" style="height:128px;z-index:0;position:absolute; left:450px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:450px; top:150px" onclick="translucent('GenSky')" id="GenSky">
+
+<img src="Images/GEONOSIANS.png" alt="Geos" style="height:128px;z-index:0;position:absolute; left:600px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:600px; top:150px" onclick="translucent('geos')" id="geos">
+
+<img src="Images/GRIEVOUS.png" alt="GG Droids" style="height:128px;z-index:0;position:absolute; left:750px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:750px; top:150px" onclick="translucent('GG')" id="GG">
+
+<img src="Images/JEDIKNIGHTREVAN.png" alt="Jedi Knight Revan" style="height:128px;z-index:0;position:absolute; left:900px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:900px; top:150px" onclick="translucent('JKR')" id="JKR">
+
+<img src="Images/KYLORENUNMASKED.png" alt="Old School FO" style="height:128px;z-index:0;position:absolute; left:1050px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:1050px; top:150px" onclick="translucent('KRU')" id="KRU">
+
+<img src="Images/NIGHTSISTERS.png" alt="Talzin's Bitches" style="height:128px;z-index:0;position:absolute; left:1200px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:1200px; top:150px" onclick="translucent('NS')" id="NS">
+
+<img src="Images/NUTE.png" alt="Nute Separatist's" style="height:128px;z-index:0;position:absolute; left:1350px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:1350px; top:150px" onclick="translucent('nute')" id="nute">
+
+<img src="Images/OLDREPUBLIC.png" alt="Carth Wants to Talk" style="height:128px;z-index:0;position:absolute; left:1500px; top:150px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:1500px; top:150px" onclick="translucent('carth')" id="carth">
+
+<img src="Images/PADME.png" alt="PADME GR" style="height:128px;z-index:0;position:absolute; left:150px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:150px; top:300px" onclick="translucent('PADME')" id="PADME">
+
+<img src="Images/PALPATINE.png" alt="PALPATINE" style="height:128px;z-index:0;position:absolute; left:300px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:300px; top:300px" onclick="translucent('PALP')" id="PALP">
+
+<img src="Images/QIRA.png" alt="QIRA SCOUNDRELS" style="height:128px;z-index:0;position:absolute; left:450px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:450px; top:300px" onclick="translucent('QIRA')" id="QIRA">
+
+<img src="Images/REBELS.png" alt="CLS REBELS" style="height:128px;z-index:0;position:absolute; left:600px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:600px; top:300px" onclick="translucent('REBELS')" id="REBELS">
+
+<img src="Images/RESISTANCE.png" alt="JTR RESISTANCE" style="height:128px;z-index:0;position:absolute; left:750px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:750px; top:300px" onclick="translucent('RESISTANCE')" id="RESISTANCE">
+
+<img src="Images/REY.png" alt="REY GL" style="height:128px;z-index:0;position:absolute; left:900px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:900px; top:300px" onclick="translucent('REY')" id="REY">
+
+<img src="Images/SHAAKTI.png" alt="SHAAK TROOPERS" style="height:128px;z-index:0;position:absolute; left:1050px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:1050px; top:300px" onclick="translucent('SHAAKTI')" id="SHAAKTI">
+
+<img src="Images/SUPREMELEADER.png" alt="SLKR" style="height:128px;z-index:0;position:absolute; left:1200px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:1200px; top:300px" onclick="translucent('SLKR')" id="SLKR">
+
+<img src="Images/TRAYA.png" alt="TRIUMVIRATE" style="height:128px;z-index:0;position:absolute; left:1350px; top:300px">
+<img src="Images/UsedTeam.png" style="z-index:1; opacity:0;position:absolute; left:1350px; top:300px" onclick="translucent('TRAYA')" id="TRAYA">
+
+
+<button type="button" onclick="reset()"> RESET </button>
+
+<footer>
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+	<p> Version 1.0 <br> This version is just designed as a proof of concept. Users will have to screenshot and post to discord for now. <br> For any assistance, contact Javin Vigil. Currently recruiting any guildmates with a knowledge of HTML, JavaScript, etc. who want to help out. </p>
+</footer>
+
+</body>
+
+<script>
+function translucent(charID) {
+  document.getElementById(charID).style.opacity = "1.0";
+}
+
+function reset() {
+	document.getElementById('BOSSK').style.opacity = "0.0";
+	document.getElementById('DREVAN').style.opacity = "0.0";
+	document.getElementById('GenSky').style.opacity = "0.0";
+	document.getElementById('geos').style.opacity = "0.0";
+	document.getElementById('GG').style.opacity = "0.0";
+	document.getElementById('JKR').style.opacity = "0.0";
+	document.getElementById('KRU').style.opacity = "0.0";
+	document.getElementById('NS').style.opacity = "0.0";
+	document.getElementById('nute').style.opacity = "0.0";
+	document.getElementById('carth').style.opacity = "0.0";
+	document.getElementById('PADME').style.opacity = "0.0";
+	document.getElementById('PALP').style.opacity = "0.0";
+	document.getElementById('QIRA').style.opacity = "0.0";
+	document.getElementById('REBELS').style.opacity = "0.0";
+	document.getElementById('RESISTANCE').style.opacity = "0.0";
+	document.getElementById('REY').style.opacity = "0.0";
+	document.getElementById('SHAAKTI').style.opacity = "0.0";
+	document.getElementById('SLKR').style.opacity = "0.0";
+	document.getElementById('TRAYA').style.opacity = "0.0";
+
+}
+	
+</script>
+
+
+</html>
