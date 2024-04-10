@@ -23,24 +23,32 @@ while i > maximum_turns:
     # If Evasive Maneuvers is found, click on it
     if evasive_maneuvers is not None:
         pyautogui.click(evasive_maneuvers)
+        print("Using Evasive Maneuvers")
     # If Evasive Maneuvers is not found, check for Hasty Repairs
     if evasive_maneuvers is None:
         hasty_repairs = pyautogui.locateOnScreen('hasty_repairs.png', confidence=0.9,region=raid_screenshot)
     # If Hasty Repairs is found, click on it
     if hasty_repairs is not None:
         pyautogui.click(hasty_repairs)
+        print("Using Hasty Repairs")
     # If Hasty Repairs is not found, check for Forest Friends
     if hasty_repairs is None:
         forest_friends = pyautogui.locateOnScreen('forest_friends.png', confidence=0.9,region=raid_screenshot)
     # If Forest Friends is found, click on it
     if forest_friends is not None:
         pyautogui.click(forest_friends)
+        print("Using Forest Friends")
     # If Forest Friends is not found, click on Basic Attack
     if forest_friends is None:
         basic_attack = pyautogui.locateOnScreen('basic_attack.png', confidence=0.9,region=raid_screenshot)
+    # If Basic Attack is found, click on it
+    if basic_attack is not None:
+        pyautogui.click(basic_attack)
+        print("Using Basic Attack")
     # If no move is found, do not count the turn
     if basic_attack is None:
         i -= 1
+        print("No move found, waiting for opponent to take their turn")
     i += 1
     # Wait 0.5 seconds for the next turn
     time.sleep(0.5)
