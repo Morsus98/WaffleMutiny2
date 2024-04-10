@@ -42,3 +42,5 @@ while i > maximum_turns:
     if basic_attack is None:
         i -= 1
     i += 1
+    # Wait 0.5 seconds for the next turn
+    time.sleep(0.5)
