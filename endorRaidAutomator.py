@@ -4,6 +4,8 @@
 
 import pyautogui
 import time
+import numpy as np
+import cv2
 
 # The script follows a simple loop.
 # The script has a maximum number of turns that it will run before it stops.
@@ -14,41 +16,74 @@ import time
 
 maximum_turns = 50
 i = 0
+EM_stacks = 0
 # Initializing the while loop for turn count
 while i < maximum_turns:
-    # Take a screenshot of the raid, which is found in the Bluestacks window
-    # raid_screenshot = pyautogui.screenshot(region=(0, 0, 1920, 1080))
-    # Check for the move Evasive Maneuvers - note that evasive maneuvers may not exactly match the image
-    evasive_maneuvers = pyautogui.locateOnScreen('evasive_maneuvers.png', confidence=0.9)
-    # If Evasive Maneuvers is found, click on it
-    if evasive_maneuvers is not None:
+    # Check for the available moves - note that evasive maneuvers may not exactly match the image
+    basic_attack = pyautogui.locateOnScreen('basic_attack.png', confidence=0.85)
+    forest_friends = pyautogui.locateOnScreen('forest_friends.png', confidence=0.85)
+    hasty_repairs = pyautogui.locateOnScreen('hasty_repairs.png', confidence=0.85)
+    evasive_maneuvers = pyautogui.locateOnScreen('evasive_maneuvers.png', confidence=0.85)
+    if evasive_maneuvers is not None and EM_stacks < 65:
+        print("Evasive Maneuvers found")
         pyautogui.click(evasive_maneuvers)
-        print("Using Evasive Maneuvers")
-    # If Evasive Maneuvers is not found, check for Hasty Repairs
-    if evasive_maneuvers is None:
-        hasty_repairs = pyautogui.locateOnScreen('hasty_repairs.png', confidence=0.9)
-    # If Hasty Repairs is found, click on it
-    if hasty_repairs is not None:
+        EM_stacks += 4
+        i += 1
+    elif hasty_repairs is not None:
+        print("Hasty Repairs found")
         pyautogui.click(hasty_repairs)
-        print("Using Hasty Repairs")
-    # If Hasty Repairs is not found, check for Forest Friends
-    if hasty_repairs is None:
-        forest_friends = pyautogui.locateOnScreen('forest_friends.png', confidence=0.9)
-    # If Forest Friends is found, click on it
-    if forest_friends is not None:
+        #EM_stacks += 3
+        i += 1
+    elif forest_friends is not None:
+        print("Forest Friends found")
         pyautogui.click(forest_friends)
-        print("Using Forest Friends")
-    # If Forest Friends is not found, click on Basic Attack
-    if forest_friends is None:
-        basic_attack = pyautogui.locateOnScreen('basic_attack.png', confidence=0.9)
-    # If Basic Attack is found, click on it
-    if basic_attack is not None:
+        #EM_stacks += 2
+        i += 1
+    elif basic_attack is not None:
+        print("Basic Attack found")
         pyautogui.click(basic_attack)
-        print("Using Basic Attack")
-    # If no move is found, do not count the turn
-    if basic_attack is None:
-        i -= 1
-        print("No move found, waiting for opponent to take their turn")
-    i += 1
-    # Wait 0.5 seconds for the next turn
-    time.sleep(0.5)
+        i += 1
+    else:
+        print("No move found")
+    # Wait 2 seconds for the next turn to finish loading
+    time.sleep(1)
+
+# I want a new function to restart if the run is not going well to minimize the time spent on a bad run.
+def start_over():
+    # First, we click the settings button
+    settings = pyautogui.locateOnScreen('SettingsButton.png', confidence=0.85)
+    pyautogui.click(settings)
+    time.sleep(2)
+    # Then we click the Retreat button
+    retreat = pyautogui.locateOnScreen('RetreatButton.png', confidence=0.85)
+    pyautogui.click(retreat)
+    time.sleep(2)
+    # We confirm the retreat
+    confirm = pyautogui.locateOnScreen('YesButton.png', confidence=0.85)
+    pyautogui.click(confirm)
+    time.sleep(2)
+    # Click the Battle (#)
+    battle = pyautogui.locateOnScreen('BattleButton.png', confidence=0.85)
+    pyautogui.click(battle)
+    time.sleep(2)
+    # Click the Leia icon to remove her button
+    try:
+        leia = pyautogui.locateOnScreen('LeiaIcon.png', confidence=0.85)
+        pyautogui.click(leia)
+        time.sleep(2)
+    except:
+        pass
+    # Click the Battle 2 icon to start the raid
+    battle2 = pyautogui.locateOnScreen('BattleIcon2.png', confidence=0.85)
+    pyautogui.click(battle2)
+    time.sleep(2)
+    # Click the Ok 2 icon if it appears
+    try:
+        ok2 = pyautogui.locateOnScreen('Ok2Icon.png', confidence=0.85)
+        pyautogui.click(ok2)
+        time.sleep(2)
+        # We'll need to click battle2 again
+        battle2 = pyautogui.locateOnScreen('BattleIcon2.png', confidence=0.85)
+    except:
+        pass
+
