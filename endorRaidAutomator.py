@@ -101,9 +101,9 @@ def check_for_minimum_evasion():
     # We'll only need the first digit of the number to determine if we have the minimum stacks
     # The icons to check for are saved as FiftyEvasion.png, FortyEvasion.png, ThirtyEvasion.png
     # If either of these icons are found, we will restart the run - we'll want high confidence for this check
-    fifty_evasion = pyautogui.locateOnScreen('FiftyEvasion.png', confidence=0.9)
-    forty_evasion = pyautogui.locateOnScreen('FortyEvasion.png', confidence=0.9)
-    thirty_evasion = pyautogui.locateOnScreen('ThirtyEvasion.png', confidence=0.9)
+    fifty_evasion = pyautogui.locateOnScreen('FiftyEvasion.png', confidence=0.90)
+    forty_evasion = pyautogui.locateOnScreen('FortyEvasion.png', confidence=0.90)
+    thirty_evasion = pyautogui.locateOnScreen('ThirtyEvasion.png', confidence=0.90)
     if fifty_evasion is not None or forty_evasion is not None or thirty_evasion is not None:
         print("Restarting the run")
         return False
