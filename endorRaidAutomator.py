@@ -94,8 +94,8 @@ def start_over():
 def check_for_minimum_evasion():
     # As a statistics tracking, we'll take a screenshot and save it as timestamp.png
     # This will allow us to track the number of EM stacks we have at the end of the run for the paper
-    timestamp = time.time()
-    pyautogui.screenshot(f'{timestamp}.png')
+    #timestamp = time.time()
+    #pyautogui.screenshot(f'{timestamp}.png')
     # If we have not met the minimum EM stacks, we will restart the run
     # We'll check by looking for the EM icon, which has a number in the top right corner
     # We'll only need the first digit of the number to determine if we have the minimum stacks
