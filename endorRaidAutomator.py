@@ -14,8 +14,9 @@ import cv2
 # The moves have the following priority: Evasive Maneuvers, Hasty Repairs, Forest Friends, and Basic Attack.
 # The script will not count a turn if it is unable to find a move to make.
 
-def attempt_the_raid():
-    maximum_EM = 16
+# attempt_the_raid will take the number of rebels as an argument. The default is 1.
+def attempt_the_raid(number_of_rebels=1):
+    maximum_EM = 16 / number_of_rebels + (number_of_rebels - 1) * 2
     i = 0
     EM_stacks = 0
     EM_Uses = 0
@@ -26,21 +27,21 @@ def attempt_the_raid():
         forest_friends = pyautogui.locateOnScreen('forest_friends.png', confidence=0.85)
         hasty_repairs = pyautogui.locateOnScreen('hasty_repairs.png', confidence=0.85)
         evasive_maneuvers = pyautogui.locateOnScreen('evasive_maneuvers.png', confidence=0.85)
-        if evasive_maneuvers is not None and EM_stacks < 65:
+        if evasive_maneuvers is not None:
             print("Evasive Maneuvers found")
             pyautogui.click(evasive_maneuvers)
-            EM_stacks += 4
+            EM_stacks += 4 * number_of_rebels
             EM_Uses += 1
             i += 1
         elif hasty_repairs is not None:
             print("Hasty Repairs found")
             pyautogui.click(hasty_repairs)
-            EM_stacks += 3
+            EM_stacks += 3 * number_of_rebels
             i += 1
         elif forest_friends is not None:
             print("Forest Friends found")
             pyautogui.click(forest_friends)
-            EM_stacks += 2
+            EM_stacks += 2 * number_of_rebels
             i += 1
         elif basic_attack is not None:
             print("Basic Attack found")
@@ -104,19 +105,38 @@ def check_for_minimum_evasion():
     fifty_evasion = pyautogui.locateOnScreen('FiftyEvasion.png', confidence=0.90)
     forty_evasion = pyautogui.locateOnScreen('FortyEvasion.png', confidence=0.90)
     thirty_evasion = pyautogui.locateOnScreen('ThirtyEvasion.png', confidence=0.90)
-    if fifty_evasion is not None or forty_evasion is not None or thirty_evasion is not None:
+    twenty_evasion = pyautogui.locateOnScreen('TwentyEvasion.png', confidence=0.90)
+    if fifty_evasion is not None or forty_evasion is not None or thirty_evasion is not None or twenty_evasion is not None:
         print("Restarting the run")
         return False
     else:
         print("EM stacks are good, returning control to the player")
         return True
     
+def auto_basic():
+    # This will only use basic attacks until the end of the run
+    number_of_no_moves = 0
+    # We'll go until we have 10 turns with no moves, then we'll stop
+    while number_of_no_moves < 10:
+        basic_attack = pyautogui.locateOnScreen('basic_attack.png', confidence=0.85)
+        if basic_attack is not None:
+            print("Basic Attack found")
+            pyautogui.click(basic_attack)
+            number_of_no_moves = 0
+        else:
+            print("No move found")
+            number_of_no_moves += 1
+            print(f"Number of no moves: {number_of_no_moves}")
+        time.sleep(1)
+    
 ready_for_manual_play = False
+em_holders = 1
 while not ready_for_manual_play:
-    attempt_the_raid()
+    attempt_the_raid(number_of_rebels=em_holders)
     ready_for_manual_play = check_for_minimum_evasion()
     if not ready_for_manual_play:
         start_over()
     else:
         print("Ready for manual play")
+        #auto_basic()
         break
