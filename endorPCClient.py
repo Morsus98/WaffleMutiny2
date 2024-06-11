@@ -4,8 +4,6 @@
 
 import pyautogui
 import time
-import numpy as np
-import cv2
 
 # The script follows a simple loop.
 # The script has a maximum number of turns that it will run before it stops.
@@ -103,7 +101,7 @@ def check_for_minimum_evasion():
     # The icons to check for are saved as FiftyEvasion.png, FortyEvasion.png, ThirtyEvasion.png
     # If either of these icons are found, we will restart the run - we'll want high confidence for this check
     # Because the icon is small and the number is small, we'll need to be sure we're looking at the right thing, so we'll check multiple times
-    for _ in range(5):
+    for _ in range(3):
         time.sleep(1) # Give the icon time to appear
         fifty_evasion = pyautogui.locateOnScreen(r'Endor_PC_Client\FiftyEvasion.png', confidence=0.90)
         forty_evasion = pyautogui.locateOnScreen(r'Endor_PC_Client\FortyEvasion.png', confidence=0.90)
